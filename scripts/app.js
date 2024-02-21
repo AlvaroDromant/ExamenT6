@@ -1,24 +1,59 @@
 document.addEventListener('DOMContentLoaded', function(){
-    iniciarapp()
-})
+    iniciarApp();
+});
 
-function iniciarapp(){
-    creargaleria()
+ 
+function iniciarApp() {
+    crearGaleria();
 }
 
-function creargaleria(){
-    const galeria = document.querySelector('imagen')
-
-    for(i = 0; 1 <= 6; i++){
-       const imagen = document.createElement(i)
-       galeria.innerHTML = `
-       <source srcset = "/assets/img/thumb/${i}.png type=img/.jpg>
-       <source srcset = "/assets/img/thumb/${i}.webp type=img/.webp>
-       <source laded=lazy width=200px heigt=300px scrset = "/assets/img/thumb>
-       `
+ 
+function crearGaleria() {
+    const galeria = document.querySelector('.galeria-imagenes');
+ 
+    for(let i = 1; i <= 6; i++ ) {
+        const imagen = document.createElement('picture');
+        imagen.innerHTML = `
+            <source srcset="assets/img/thumb/${i}.jpg" type="image/jpg">
+            <source srcset="assets/img/thumb/${i}.webp" type="image/webp">
+            <img loading="lazy" width="200" height="300" src="assets/img/thumb/${i}.jpg" alt="imagen galeria">
+        `;
+        imagen.onclick = function() {
+            mostrarImagen(i);
+        }
+ 
+        galeria.appendChild(imagen);
     }
-
-    galeria.onclick()
-
-    galeria.appendChild()
+}  
+ 
+function mostrarImagen(id) {
+    const imagen = document.createElement('picture');
+    imagen.innerHTML = `
+        <source srcset="assets/img/grande/${id}.jpg" type="image/jpg">
+        <source srcset="assets/img/grande/${id}.webp" type="image/webp">
+        <img loading="lazy" width="200" height="300" src="assets/img/grande/${id}.jpg" alt="imagen galeria">
+    `;
+ 
+    const overlay = document.createElement('DIV');
+    overlay.appendChild(imagen);
+    overlay.classList.add('overlay');
+    overlay.onclick = function() {
+        const body = document.querySelector('body');
+        body.classList.remove('fijar-body');
+        overlay.remove();
+    }
+ 
+    const cerrarModal = document.createElement('P');
+    cerrarModal.textContent = 'X';
+    cerrarModal.classList.add('btn-cerrar');
+    cerrarModal.onclick = function() {
+        const body = document.querySelector('body');
+        body.classList.remove('fijar-body');
+        overlay.remove();
+    }
+    overlay.appendChild(cerrarModal);
+ 
+    const body = document.querySelector('body');
+    body.appendChild(overlay);
+    body.classList.add('fijar-body');
 }

@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ExamenT6</title>
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
     <header>
         <nav>
             <img src="/assets/img/asturias.png" alt="mapa asturias" class="mapa">
             <ul>
-                <li><a src="#Inicio">Inicio</a></li>
-                <li><a src="#Galeria">Galeria</a></li>
+                <li><a src="#inicio">Inicio</a></li>
+                <li><a src="#galeria">Galeria</a></li>
             </ul>
         </nav>
     </header>
@@ -24,14 +25,21 @@
         <div class="hero-video">
             <video autoplay loop muted>
                 <source src="/video/cascada.mp4" type="video/mp4">
-                <source src="/video/cascada.webm" type="video/mp4">
+                <source src="/video/cascada.webm" type="video/webm">
             </video>
         </div>
     </div>
 
-    <section
+    <section id="galeria" class="galeria contenedor">
+        <h2>Galeria</h2>
+        <ul class="galeria-imagenes"></ul>
+    </section>
+
+    <footer>
+        <img src="/assets/img/paraisoNatural.jpg" alt="Paraiso" class="paraiso">
+    </footer>
 
 
-
+       <script src="/scripts/app.js"></script>
 </body>
 </html>
